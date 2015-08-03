@@ -1,3 +1,3 @@
-activate_this = 'venv/env/bin/activate'
+activate_this = 'whatdayisitinnz/venv/bin/activate'
 execfile(activate_this, dict(__file__=activate_this))
 from whatdayisitinnz import app as application
