@@ -1,4 +1,6 @@
-ssh www.whatdayisitin.nz -l $SSH_USER -Q "$SSH_KEY"
+OUT="$(mktemp)"
+echo $SSH_key > $OUT
+ssh www.whatdayisitin.nz -l $SSH_USER -i $OUT
 cd /var/www/whatdayisitinnz/whatdayisitinnz
 git pull
 virtualenv whatdayisitinnz/venv
