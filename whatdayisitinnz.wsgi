@@ -1,4 +1,6 @@
 #!/usr/bin/python
-activate_this = 'whatdayisitinnz/venv/bin/activate'
-execfile(activate_this, dict(__file__=activate_this))
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0,"/var/www/whatdayisitinnz/whatdayisitinnz")
 from whatdayisitinnz import app as application

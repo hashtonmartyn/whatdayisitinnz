@@ -4,4 +4,5 @@ python:
 install:
   - pip install -r requirements.txt
 script: nosetests
-after_success:  .travis/after_success.sh
+after_success:
+  -bash .travis/after_success.sh

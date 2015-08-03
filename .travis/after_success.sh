@@ -4,3 +4,5 @@ git pull
 virtualenv whatdayisitinnz/venv
 source whatdayisitinnz/venv/bin/activate
 pip install -r requirements.txt
+deactivate
+service apache2 restart
