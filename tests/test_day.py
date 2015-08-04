@@ -5,7 +5,7 @@ Created on Jul 12, 2015
 '''
 import unittest
 from nose.tools import raises
-from whatdayisitinnz.day import Day, MOTHERS_DAY, CHRISTMAS, TODAY, WAITANGI_DAY, FATHERS_DAY
+from whatdayisitinnz.day import Day, MOTHERS_DAY, CHRISTMAS, TODAY, WAITANGI_DAY, FATHERS_DAY, LABOUR_DAY, QUEENS_BIRTHDAY
 from pytz import timezone
 from datetime import datetime
 
@@ -118,6 +118,43 @@ class TestFathersDay(TestSpecificDayBase):
                                      datetime(1990, 9, 3, tzinfo=self.NZ_time),
                                      datetime(1990, 9, 6, tzinfo=self.NZ_time),
                                      datetime(2015, 9, 2, tzinfo=self.NZ_time))
+        
+        
+class TestLabourDay(TestSpecificDayBase):
+    
+    def setUp(self):
+        super(TestLabourDay, self).setUp()
+        self.day = LABOUR_DAY
+        self.sample_positive_days = (datetime(1990, 10, 22, tzinfo=self.NZ_time),
+                                     datetime(1991, 10, 28, tzinfo=self.NZ_time),
+                                     datetime(1999, 10, 25, tzinfo=self.NZ_time),
+                                     datetime(2000, 10, 23, tzinfo=self.NZ_time),
+                                     datetime(2015, 10, 26, tzinfo=self.NZ_time),
+                                     datetime(2016, 10, 24, tzinfo=self.NZ_time),)
+        
+        self.sample_negative_days = (datetime(1990, 10, 21, tzinfo=self.NZ_time),
+                                     datetime(1990, 10, 23, tzinfo=self.NZ_time),
+                                     datetime(1990, 9, 22, tzinfo=self.NZ_time),
+                                     datetime(1990, 9, 3, tzinfo=self.NZ_time),
+                                     datetime(1990, 9, 6, tzinfo=self.NZ_time),
+                                     datetime(2015, 9, 2, tzinfo=self.NZ_time))
+        
+class TestQueensBirthday(TestSpecificDayBase):
+    
+    def setUp(self):
+        super(TestQueensBirthday, self).setUp()
+        self.day = QUEENS_BIRTHDAY
+        self.sample_positive_days = (datetime(1990, 6, 4, tzinfo=self.NZ_time),
+                                     datetime(1991, 6, 3, tzinfo=self.NZ_time),
+                                     datetime(1999, 6, 7, tzinfo=self.NZ_time),
+                                     datetime(2015, 6, 1, tzinfo=self.NZ_time),
+                                     datetime(2016, 6, 6, tzinfo=self.NZ_time))
+        
+        self.sample_negative_days = (datetime(1990, 6, 3, tzinfo=self.NZ_time),
+                                     datetime(1990, 6, 5, tzinfo=self.NZ_time),
+                                     datetime(1990, 5, 4, tzinfo=self.NZ_time),)
+        
+        
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
