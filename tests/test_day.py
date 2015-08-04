@@ -5,7 +5,7 @@ Created on Jul 12, 2015
 '''
 import unittest
 from nose.tools import raises
-from whatdayisitinnz.day import Day, MOTHERS_DAY, CHRISTMAS, TODAY, WAITANGI_DAY, FATHERS_DAY, LABOUR_DAY, QUEENS_BIRTHDAY
+from whatdayisitinnz.day import Day, MOTHERS_DAY, CHRISTMAS, TODAY, WAITANGI_DAY, FATHERS_DAY, LABOUR_DAY, QUEENS_BIRTHDAY, NEW_YEARS_DAY
 from pytz import timezone
 from datetime import datetime
 
@@ -154,6 +154,19 @@ class TestQueensBirthday(TestSpecificDayBase):
                                      datetime(1990, 6, 5, tzinfo=self.NZ_time),
                                      datetime(1990, 5, 4, tzinfo=self.NZ_time),)
         
+class TestNewYearsDay(TestSpecificDayBase):
+    
+    def setUp(self):
+        super(TestNewYearsDay, self).setUp()
+        self.day = NEW_YEARS_DAY
+        self.sample_positive_days = (datetime(1999, 1, 1, tzinfo=self.NZ_time),
+                                     datetime(2000, 1, 1, tzinfo=self.NZ_time),
+                                     datetime(2015, 1, 1, tzinfo=self.NZ_time),
+                                     datetime(2016, 1, 1, tzinfo=self.NZ_time))
+        
+        self.sample_negative_days = (datetime(2016, 1, 2, tzinfo=self.NZ_time),
+                                     datetime(2016, 2, 1, tzinfo=self.NZ_time),
+                                     datetime(2015, 12, 31, tzinfo=self.NZ_time))
         
 
 if __name__ == "__main__":

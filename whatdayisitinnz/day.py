@@ -149,6 +149,17 @@ class QueensBirthday(Day):
     def is_today(self, current_datetime=datetime.now(tz=NZ_TIME_ZONE)):
         return self._the_nth_day_in_the_month(1, 1, 6, current_datetime)
     
+class NewYearsDay(Day):
+    """
+    1st of the 1st
+    """
+    def __init__(self):
+        super(NewYearsDay, self).__init__("/{0}".format(self.__class__.__name__.lower()),
+                                         "New Year's Day")
+        
+    def is_today(self, current_datetime=datetime.now(tz=NZ_TIME_ZONE)):
+        return current_datetime.month == 1 and current_datetime.day == 1
+    
     
 MOTHERS_DAY = MothersDay()
 CHRISTMAS = Christmas()
@@ -157,6 +168,7 @@ WAITANGI_DAY = WaitangiDay()
 FATHERS_DAY = FathersDay()
 LABOUR_DAY = LabourDay()
 QUEENS_BIRTHDAY = QueensBirthday()
+NEW_YEARS_DAY = NewYearsDay()
 
 DAYS = (TODAY,
         MOTHERS_DAY,
@@ -164,4 +176,5 @@ DAYS = (TODAY,
         WAITANGI_DAY,
         CHRISTMAS,
         LABOUR_DAY,
-        QUEENS_BIRTHDAY)    
+        QUEENS_BIRTHDAY,
+        NEW_YEARS_DAY)    
