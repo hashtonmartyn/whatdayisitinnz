@@ -4,8 +4,8 @@ Created on Jul 12, 2015
 @author: hashtonmartyn
 '''
 from datetime import datetime
-from pytz import timezone
-NZ_TIME_ZONE = timezone("Pacific/Auckland")
+from dateutil import tz
+NZ_TIME_ZONE = tz.gettz("Pacific/Auckland")
 
 class Day(object):
     """
@@ -70,7 +70,7 @@ class MothersDay(Day):
         super(MothersDay, self).__init__("/{0}".format(self.__class__.__name__.lower()),
                                          "Mother's Day")
     
-    def is_today(self, current_datetime=NZ_TIME_ZONE.localize(datetime.now())):
+    def is_today(self, current_datetime=datetime.now(tz=NZ_TIME_ZONE)):
         return self._the_nth_day_in_the_month(2, 7, 5, current_datetime)
     
 class Christmas(Day):
@@ -82,7 +82,7 @@ class Christmas(Day):
         super(Christmas, self).__init__("/{0}".format(self.__class__.__name__.lower()),
                                          "Christmas Day")
     
-    def is_today(self, current_datetime=NZ_TIME_ZONE.localize(datetime.now())):
+    def is_today(self, current_datetime=datetime.now(tz=NZ_TIME_ZONE)):
         return current_datetime.month == 12 and current_datetime.day == 25
     
 class Today(Day):
@@ -94,7 +94,7 @@ class Today(Day):
         super(Today, self).__init__("/{0}".format(self.__class__.__name__.lower()),
                                          "Today")
     
-    def is_today(self, current_datetime=NZ_TIME_ZONE.localize(datetime.now())):
+    def is_today(self, current_datetime=datetime.now(tz=NZ_TIME_ZONE)):
         return True
     
     @property
@@ -110,7 +110,7 @@ class WaitangiDay(Day):
         super(WaitangiDay, self).__init__("/{0}".format(self.__class__.__name__.lower()),
                                           "Waitangi Day")
         
-    def is_today(self, current_datetime=NZ_TIME_ZONE.localize(datetime.now())):
+    def is_today(self, current_datetime=datetime.now(tz=NZ_TIME_ZONE)):
         return current_datetime.month == 2 and current_datetime.day == 6
     
 class FathersDay(Day):
@@ -122,7 +122,7 @@ class FathersDay(Day):
         super(FathersDay, self).__init__("/{0}".format(self.__class__.__name__.lower()),
                                          "Father's Day")
     
-    def is_today(self, current_datetime=NZ_TIME_ZONE.localize(datetime.now())):
+    def is_today(self, current_datetime=datetime.now(tz=NZ_TIME_ZONE)):
         return self._the_nth_day_in_the_month(1, 7, 9, current_datetime)
     
 class LabourDay(Day):
@@ -134,7 +134,7 @@ class LabourDay(Day):
         super(LabourDay, self).__init__("/{0}".format(self.__class__.__name__.lower()),
                                          "Labour Day")
         
-    def is_today(self, current_datetime=NZ_TIME_ZONE.localize(datetime.now())):
+    def is_today(self, current_datetime=datetime.now(tz=NZ_TIME_ZONE)):
         return self._the_nth_day_in_the_month(4, 1, 10, current_datetime)
     
 class QueensBirthday(Day):
@@ -146,7 +146,7 @@ class QueensBirthday(Day):
         super(QueensBirthday, self).__init__("/{0}".format(self.__class__.__name__.lower()),
                                          "Queen's Birthday")
         
-    def is_today(self, current_datetime=NZ_TIME_ZONE.localize(datetime.now())):
+    def is_today(self, current_datetime=datetime.now(tz=NZ_TIME_ZONE)):
         return self._the_nth_day_in_the_month(1, 1, 6, current_datetime)
     
 class NewYearsDay(Day):
@@ -157,7 +157,7 @@ class NewYearsDay(Day):
         super(NewYearsDay, self).__init__("/{0}".format(self.__class__.__name__.lower()),
                                          "New Year's Day")
         
-    def is_today(self, current_datetime=NZ_TIME_ZONE.localize(datetime.now())):
+    def is_today(self, current_datetime=datetime.now(tz=NZ_TIME_ZONE)):
         return current_datetime.month == 1 and current_datetime.day == 1
     
     
@@ -178,3 +178,4 @@ DAYS = (TODAY,
         LABOUR_DAY,
         QUEENS_BIRTHDAY,
         NEW_YEARS_DAY)    
+    
